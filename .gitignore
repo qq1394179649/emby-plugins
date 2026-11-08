@@ -15,3 +15,6 @@ ref/
 # plugin runtime data (reports / history may contain private paths)
 report_*.md
 merge_history.jsonl
+
+# published binaries (deliberately committed)
+!dist/*.dll

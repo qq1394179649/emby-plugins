@@ -34,6 +34,24 @@ dotnet build MediaMerge/EmbyMediaMerge.csproj     -c Release
 产物：`StrmSizeProbe/bin/Release/net8.0/EmbyStrmSize.dll`、`MediaMerge/bin/Release/net8.0/EmbyMediaMerge.dll`。
 若 `ref/` 放在别处，可覆盖：`dotnet build ... -p:EmbyRefDir=/path/to/dlls`。
 
+## 预编译版本
+
+`dist/` 内为按本仓库源码构建的可用 dll（.NET 8，`DebugType=None`、`Deterministic=true`，不含调试符号与本机构建路径），可直接安装，无需自己编译：
+
+| 文件 | 大小 | 说明 |
+| --- | --- | --- |
+| `dist/EmbyStrmSize.dll` | 43 KB | Strm Size Probe |
+| `dist/EmbyMediaMerge.dll` | 43 KB | Media Merge（多版本合并） |
+
+校验完整性：
+
+```bash
+cd dist && sha256sum -c SHA256SUMS.txt
+```
+
+想自行复核：按上文「编译」重建时加 `-p:DebugType=None -p:DebugSymbols=false -p:Deterministic=true -p:ContinuousIntegrationBuild=true`，产物 SHA256 应与 `dist/SHA256SUMS.txt` 一致。
+替换前建议先备份 `config/plugins/` 下的同名 dll。
+
 ## 安装
 
 ```bash
