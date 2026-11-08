@@ -1,0 +1,17 @@
+# build output
+bin/
+obj/
+*.user
+*.suo
+.vs/
+
+# Emby private assemblies copied from your own installation - never commit
+ref/
+*.dll
+*.pdb
+*.nupkg
+*.zip
+
+# plugin runtime data (reports / history may contain private paths)
+report_*.md
+merge_history.jsonl
